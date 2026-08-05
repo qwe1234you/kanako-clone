@@ -1,0 +1,51 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: kanako-backend
+  profiles:
+    active: dev
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+  jackson:
+    time-zone: Asia/Shanghai
+    date-format: yyyy-MM-dd HH:mm:ss
+  mvc:
+    throw-exception-if-no-handler-found: true
+  web:
+    resources:
+      add-mappings: false
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
+
+kanako:
+  jwt:
+    # 生产环境务必修改
+    secret: kanako-clone-dev-secret-key-change-me-in-production-0123456789
+    expire-hours: 168
+  storage:
+    # local 或 aliyun-oss
+    mode: local
+    local-dir: ./data/upload
+    oss-endpoint: ""
+    oss-bucket: ""
+  llm:
+    # OpenAI 兼容接口
+    base-url: https://api.openai.com/v1
+    api-key: ""
+    model: gpt-4o-mini
+  razor:
+    github-client-id: ""
+    github-client-secret: ""
+    github-redirect-uri: "http://localhost:5173/auth/github/callback"
+  site:
+    domain: "http://localhost:5173"

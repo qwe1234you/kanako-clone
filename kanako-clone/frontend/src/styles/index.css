@@ -1,0 +1,166 @@
+:root {
+  color-scheme: dark;
+  --bg: #121810;
+  --bg-soft: #18201a;
+  --bg-card: rgba(30, 40, 33, 0.7);
+  --border: rgba(120, 160, 130, 0.16);
+  --text: #dce6dc;
+  --text-secondary: #9db49f;
+  --text-muted: #6f8772;
+  --accent: #6fcf97;
+  --accent-soft: rgba(111, 207, 151, 0.12);
+  --danger: #e06c75;
+  --warning: #e5c07b;
+  --radius: 14px;
+  --shadow: 0 10px 34px rgba(0, 0, 0, 0.35);
+  --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, 'Courier New', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* element plus 深色覆盖 */
+html.dark {
+  --el-bg-color: #18201a;
+  --el-bg-color-page: #121810;
+  --el-bg-color-overlay: #1c261f;
+  --el-text-color-primary: var(--text);
+  --el-text-color-regular: #c9d6ca;
+  --el-border-color: var(--border);
+  --el-fill-color-blank: #18201a;
+  --el-color-primary: #57b57e;
+}
+
+/* 毛玻璃卡片 */
+.glass-blur {
+  background: var(--bg-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+/* container */
+.page-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px 20px 80px;
+}
+
+/* 页面通用 header */
+.page-header {
+  margin-bottom: 28px;
+}
+
+.eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 6px;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+/* 代码块基础样式（渲染后由 BlogRenderer 细化） */
+.blog-prose pre {
+  background: #0e140f;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  line-height: 1.7;
+}
+
+.blog-prose code {
+  font-family: var(--font-mono);
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal {
+  color: #c678dd;
+}
+.hljs-string,
+.hljs-attr {
+  color: #98c379;
+}
+.hljs-title,
+.hljs-function,
+.hljs-section {
+  color: #61afef;
+}
+.hljs-number,
+.hljs-built_in {
+  color: #e5c07b;
+}
+.hljs-comment {
+  color: #5c6370;
+  font-style: italic;
+}
+.hljs-params,
+.hljs-variable {
+  color: #e06c75;
+}
+
+/* 淡入动画 */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fade-up 0.45s ease both;
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(111, 207, 151, 0.18);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(111, 207, 151, 0.32);
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}

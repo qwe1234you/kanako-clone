@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    # MySQL 兼容模式，本地零安装；文件模式数据落盘到 backend/data/
+    url: jdbc:h2:file:./data/kanako;MODE=MySQL;DATABASE_TO_LOWER=TRUE;CASE_INSENSITIVE_IDENTIFIERS=TRUE
+    username: sa
+    password: ""
+  h2:
+    console:
+      enabled: true
+      path: /h2-console

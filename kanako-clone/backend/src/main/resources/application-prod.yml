@@ -1,0 +1,40 @@
+# 生产环境配置模板
+# 启动方式: java -jar kanako-backend-1.0.0.jar --spring.profiles.active=prod
+server:
+  port: 8080
+
+spring:
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+  # 生产环境使用 MySQL
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/kanako?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: kanako
+    password: CHANGE_ME
+  jackson:
+    time-zone: Asia/Shanghai
+    date-format: yyyy-MM-dd HH:mm:ss
+
+kanako:
+  jwt:
+    # 生产环境务必更换为随机长字符串
+    secret: CHANGE_ME_TO_A_LONG_RANDOM_SECRET_AT_LEAST_32_CHARS
+    expire-hours: 168
+  storage:
+    mode: local          # 或 aliyun-oss
+    local-dir: /data/kanako/upload
+    oss-endpoint: ""
+    oss-bucket: ""
+  llm:
+    base-url: https://api.openai.com/v1
+    api-key: ""          # 填写后 AI 聊天才可用
+    model: gpt-4o-mini
+  razor:
+    github-client-id: ""       # 填写后 GitHub 登录可用
+    github-client-secret: ""
+    github-redirect-uri: "https://example.com/auth/github/callback"
+  site:
+    domain: "https://example.com"
